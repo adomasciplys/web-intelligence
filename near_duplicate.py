@@ -5,7 +5,26 @@ def Jaccard(A,B):
     union = len(A.union(B))
     return overlap / union
 
-A = {"do not worry", "not worry about", "worry about your", "about your difficulties", "your difficulties in", "difficulties in mathematics"}
-B = {"i would not", "would not worry", "not worry about", "worry about your", "about your difficulties", "your difficulties you", "difficulties you can", "you can easily", "can easily learn", "easily learn what", "learn what is", "what is needed"}
+def kShingles(k, string):
+    cleaned_string = str(string.replace(',', ''))
+    shingles = set()
+    words = cleaned_string.split()
+    n = len(words)
 
-print(Jaccard(A,B))
+    for i in range(n - k + 1):
+        shingle = " ".join(words[i:i+k])
+        shingles.add(shingle)
+
+    return shingles
+
+A = "Do not worry about your difficulties in Mathematics"
+B = "i would not worry about your difficulties, you can easily learn what is needed"
+k = 3
+A_shingle = kShingles(3, A)
+B_shingle = kShingles(3, B)
+result = Jaccard(A_shingle, B_shingle)
+print(result)
+
+
+
+
