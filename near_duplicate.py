@@ -17,14 +17,19 @@ def kShingles(k, string):
 
     return shingles
 
-A = "Do not worry about your difficulties in Mathematics"
-B = "i would not worry about your difficulties, you can easily learn what is needed"
-k = 3
-A_shingle = kShingles(3, A)
-B_shingle = kShingles(3, B)
-result = Jaccard(A_shingle, B_shingle)
-print(result)
+def readFile(filePath):
+    f = open(filePath)
+    text = f.read()
+    f.close()
+    return text
 
+def nearDuplicate(fileA, fileB):
+    k = 3
+    A_shingle = kShingles(k, fileA)
+    B_shingle = kShingles(k, fileB)
+    result = Jaccard(A_shingle, B_shingle)
+    print(result)
 
+nearDuplicate(readFile("File_A.txt"), readFile("File_B.txt"))
 
 
