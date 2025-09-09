@@ -24,12 +24,18 @@ def readFile(filePath):
     return text
 
 def nearDuplicate(fileA, fileB):
+    result = ""
     k = 3
     A_shingle = kShingles(k, fileA)
     B_shingle = kShingles(k, fileB)
-    result = Jaccard(A_shingle, B_shingle)
-    print(result)
+    similarity = Jaccard(A_shingle, B_shingle)
+    if(similarity > 0.9):
+        result = "Near Duplicate: "
+    else:
+        result = "Not a duplicate: "
+    return result + str(similarity)
 
-nearDuplicate(readFile("File_A.txt"), readFile("File_B.txt"))
+result = nearDuplicate(readFile("File_A.txt"), readFile("File_B.txt"))
+print(result)
 
 
