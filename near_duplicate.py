@@ -5,8 +5,11 @@ def Jaccard(A,B):
     union = len(A.union(B))
     return overlap / union
 
+def clean_string(string):
+    return string.translate(str.maketrans('', '', ',.!?;:-'))
+
 def kShingles(k, string):
-    cleaned_string = str(string.replace(',', ''))
+    cleaned_string = clean_string(string)
     shingles = set()
     words = cleaned_string.split()
     n = len(words)
